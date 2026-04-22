@@ -1,11 +1,12 @@
 # Amazon Data Extraction Tool
 
-***Overview***
+## Overview
 
 A Python-based web scraper designed to extract real-time product data from Amazon. This tool automates the process of navigating through multiple search result pages, handling dynamic content, and structuring raw web data into a clean, analysis-ready CSV format.
 
+---
 
-***Key Features***
+## Key Features
 * **Dynamic Content Rendering:** Leverages Playwright to simulate a real browser environment, ensuring that lazy-loaded elements and JavaScript-rendered content are fully captured.
 
 * **Intelligent Parsing:** Uses BeautifulSoup with advanced CSS selectors to isolate product attributes with high precision.
@@ -14,8 +15,9 @@ A Python-based web scraper designed to extract real-time product data from Amazo
 
 * **Data Validation Pipeline:** Implements a strict validation layer to filter out noise (like ads or incomplete listings) while maintaining data integrity for new products.
 
+---
 
-***Technical Stack***
+## Technical Stack
 * **Python:** Core logic and data processing.
 
 * **Playwright:** Chromium automation for bypassing basic bot detection and rendering JS.
@@ -24,8 +26,9 @@ A Python-based web scraper designed to extract real-time product data from Amazo
 
 * **CSV Module:** Data persistence and structuring.
 
+---
 
-***Data Architecture & Logic***
+## Data Architecture & Logic
 
 To ensure a high-quality dataset, the script applies the following rules:
 
@@ -33,8 +36,9 @@ To ensure a high-quality dataset, the script applies the following rules:
 
 * **Graceful Handling of Nulls:** For attributes like Ratings and Review Counts (which may be missing for new arrivals), the script assigns "N/A" values rather than breaking the flow or omitting the product.
 
+---
 
-***How to run***
+## How to run
 
 1.**Install Requirements:**
 Make sure you have Python installed, then run the following commands from the project directory:
