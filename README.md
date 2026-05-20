@@ -11,7 +11,7 @@ A Python-based web scraper designed to extract real-time product data from Amazo
 
 * **Intelligent Parsing:** Uses BeautifulSoup with advanced CSS selectors to isolate product attributes with high precision.
 
-* **Automated Pagination:** Built-in logic to navigate across multiple result pages seamlessly.
+* **Continuous Pagination Engine:** Navigates across multiple result pages indefinitely, featuring a graceful shutdown mechanism that securely exports all extracted data the moment a manual stop is triggered.
 
 * **Data Validation Pipeline:** Implements a strict validation layer to filter out noise (like ads or incomplete listings) while maintaining data integrity for new products.
 
