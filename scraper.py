@@ -83,25 +83,40 @@ def save_to_csv(data, filename="amazon_products.csv"):
 url = 'https://www.amazon.com/s?i=videogames-intl-ship&srs=16225016011&rh=n%3A16225016011&s=popularity-rank&fs=true&qid=1776861552&xpid=Ezv7nHIwvGH6m&ref=sr_pg_1'
 all_products_data = []
 
-print("Extracting data from Amazon, please hold on...")
-for page_num in range(1, 3):
-    # we are iterating through the first 2 pages of the search results
-    current_url = f"{url}&page={page_num}"
+print("Extracting data from Amazon... Press Ctrl+C in the terminal to stop at any time.")
 
-    # we scrape the current page and parse the results
-    HTML = scrape_amazon_page(current_url)
+page_num = 1
+try:
+    while True:
+        print(f"Scraping page {page_num}...")
+        current_url = f"{url}&page={page_num}"
 
-    # we extract the product data from the HTML and add it to our list of all products
-    products_data = parse_results(HTML)
-    all_products_data.extend(products_data)
+        # we scrape the current page and parse the results
+        HTML = scrape_amazon_page(current_url)
 
-    if page_num < 2:
+        # we extract the product data from the HTML and add it to our list of all products
+        products_data = parse_results(HTML)
+
+        # Safety check: If the page returns no products (reached the end or got temporarily blocked)
+        if not products_data:
+            print("No more products found on this page. Stopping the scraper.")
+            break
+
+        all_products_data.extend(products_data)
+
+        page_num += 1
+        
         # we wait for 3 seconds because the code is making the requests very fast,
-        #and we want to avoid getting blocked by Amazon 
+        # and we want to avoid getting blocked by Amazon 
         time.sleep(3)
 
+except KeyboardInterrupt:
+    # catches the Ctrl+C command from the user smoothly without crashing
+    print("\n[INFO] User manually stopped the script.")
+
+# Save everything collected so far
 save_to_csv(all_products_data)
-print("Finished! Check the CSV file for the scraped data.")
+print(f"Finished! Successfully saved {len(all_products_data)} products. Check the CSV file.")
 
 
 
