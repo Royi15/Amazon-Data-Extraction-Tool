@@ -1,4 +1,4 @@
-# Amazon Data Extraction Tool
+# Amazon Web Scraper
 
 ## Overview
 
